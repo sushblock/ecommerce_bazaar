@@ -4,16 +4,19 @@ import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import ShoppingBasketOutlinedIcon from '@mui/icons-material/ShoppingBasketOutlined';
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useStateValue } from "../helpers/StateProvider";
 import { auth } from "../config/firebase";
 
+
 function Header() {
   const [{ basket, user }, dispatch] = useStateValue();
+  const navigate = useNavigate();
 
   const handleAuthenticaton = () => {
     if (user) {
       auth.signOut();
+      navigate("/")
     }
   };
 

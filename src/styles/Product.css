@@ -1,53 +1,73 @@
 .product {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
-    margin: 10px;
-    padding: 20px;
-    width: 100%;
-    max-width: 300px; /* maximum width for each product */
-    background-color: white;
-    z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 10px;
+  padding: 20px;
+  width: 100%;
+  max-width: 300px; /* maximum width for each product */
+  background-color: white;
+  z-index: 1;
+}
+
+@media (min-width: 600px) {
+  .product {
+    width: calc(40% - 10px);
+    max-width: none; /* remove the maximum width for larger screens */
   }
-  
-  @media (min-width: 600px) {
-    .product {
-      width: calc(40% - 10px);
-      max-width: none; /* remove the maximum width for larger screens */
-    }
+}
+
+@media (min-width: 1024px) {
+  .product {
+    width: calc(30% - 10px);
   }
-  
-  @media (min-width: 1024px) {
-    .product {
-      width: calc(30% - 10px);
-    }
-  }
-  
-  .product__rating {
-    display: flex;
-  }
-  
-  .product > img {
-    max-height: 200px;
-    width: 100%;
-    object-fit: contain;
-    margin-bottom: 15px;
-  }
-  
-  .product > button {
-    background: #f0c14b;
-    border: 1px solid;
-    margin-top: 10px;
-    border-color: #a88734 #9c7e31 #846a29;
-    color: #111;
-  }
-  
-  .product__price {
-    margin-top: 5px;
-  }
-  
-  .product__info {
-    height: 100px;
-    margin-bottom: 15px;
-  }
+}
+
+.product__rating {
+  display: flex;
+}
+
+.product > img {
+  max-height: 200px;
+  width: 100%;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+
+.product > button {
+  background: #f0c14b;
+  border: 1px solid;
+  margin-top: 10px;
+  border-color: #a88734 #9c7e31 #846a29;
+  color: #111;
+}
+
+.product__price {
+  margin-top: 5px;
+}
+
+.product__info {
+  height: 100px;
+  margin-bottom: 15px;
+}
+
+.product__addremove {
+  display: flex;
+}
+
+.product__addremove > button {
+  background: #f0c14b;
+  border: 1px solid;
+  border-color: #a88734 #9c7e31 #846a29;
+  color: #111;
+}
+
+.product__addremove > label {
+  background: #e3dccb;
+  border: 1px solid;
+  border-color: #a88734 #9c7e31 #846a29;
+  color: #111;
+  padding-left: 5px;
+  padding-right: 5px;
+}
