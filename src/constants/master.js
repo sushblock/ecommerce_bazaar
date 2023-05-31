@@ -1,0 +1,4 @@
+export const curr_applicable = [{ value: "INR", label: "INR", symbol: "₹"}]
+export const plan_applicable = [{ id:1, duration: "One Year", rate: "12% Compounding", interest: 12 }, { id:2, duration: "Two Year", rate: "13% Compounding", interest: 13 }, { id:3, duration: "Three Year", rate: "14% Compounding", interest: 14 }, { id:4, duration: "Four Year", rate: "15% Compounding", interest: 15 }, { id:5, duration: "Five Year", rate: "16% Compounding", interest: 16}]
+
+export const curr_applicable_future = [{ value: "INR", label: "INR", symbol: "₹"},{ value: "USD", label: "USD", symbol: "US$" }, { value: "EUR", label: "EUR", symbol: "€" }, { value: "GBP", label: "GBP", symbol: "£" }, { value: "AUD", label: "AUD", symbol: "AU$" }, { value: "CAD", label: "CAD", symbol: "CA$" }, { value: "SGD", label: "SGD", symbol: "SG$" }, { value: "CNY", label: "CNY", symbol: "¥" }]
