@@ -2,19 +2,14 @@ import SplashScreen from "../src/components/SplashScreen";
 import React, { useState, useEffect, lazy, Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-//import Login from "./pages/Login";
 import { auth } from "./config/firebase";
 import { useStateValue } from "../src/helpers/StateProvider";
-import { loadStripe } from "@stripe/stripe-js";
-import { Elements } from "@stripe/react-stripe-js";
-import OrderConfirmation from "./pages/OrderConfirmation";
-import PastOrders from "./pages/PastOrders";
-//import Checkout from "./pages/Checkout";
-//import Payment from "./pages/Payment";
 const Header = lazy(() => import("./components/Header"));
 const Login = lazy(() => import("./pages/Login"));
 const Checkout = lazy(() => import("./pages/Checkout"));
 const Payment = lazy(() => import("./pages/Payment"));
+const OrderConfirmation = lazy(() => import("./pages/OrderConfirmation"));
+const PastOrders = lazy(() => import("./pages/PastOrders"));
 
 function App() {
   const [{ user }, dispatch] = useStateValue();

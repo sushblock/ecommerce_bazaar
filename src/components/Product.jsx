@@ -1,22 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useStateValue } from "../helpers/StateProvider";
 import "../styles/Product.css";
 
 function Product({ id, title, image, price, rating }) {
   const [{ basketQty }, dispatch] = useStateValue();
-  const [qty, setQty] = useState(0);
 
   useEffect(() => {
     const quantity = basketQty.find((item) => item.id === id)?.quantity;
-    //console.log(`quantity of ${id} --> ${quantity}`);
     if (quantity !== undefined) {
-      setQty(quantity);
+      dispatch({
+        type: "UPDATE_QUANTITY",
+        id: id,
+        quantity: quantity,
+      });
     }
-    else setQty(0);
-  }, [basketQty, id]);
+  }, [basketQty, dispatch, id]);
 
   const addToBasket = () => {
-    // dispatch the item into the data layer
     dispatch({
       type: "ADD_TO_BASKET",
       item: {
@@ -30,11 +30,21 @@ function Product({ id, title, image, price, rating }) {
   };
 
   const removeFromBasket = () => {
-    // remove the item from the basket
     dispatch({
       type: "REMOVE_FROM_BASKET",
       id: id,
     });
+  };
+
+  const renderRatingStars = () => {
+    const roundedRating = Math.round(rating);
+    const starIcons = [];
+
+    for (let i = 0; i < roundedRating; i++) {
+      starIcons.push(<p key={i}>⭐</p>);
+    }
+
+    return starIcons;
   };
 
   return (
@@ -45,19 +55,13 @@ function Product({ id, title, image, price, rating }) {
           <small>₹</small>
           <strong>{price}</strong>
         </p>
-        <div className="product__rating">
-          {Array(rating)
-            .fill()
-            .map((_, i) => (
-              <p key={i}>⭐</p>
-            ))}
-        </div>
+        <div className="product__rating">{renderRatingStars()}</div>
       </div>
 
       <img src={image} alt="" />
       <div className="product__addremove">
         <button onClick={addToBasket}>+</button>
-        <label id="quantity">{qty}</label>
+        <label id="quantity">{basketQty.find((item) => item.id === id)?.quantity || 0}</label>
         <button onClick={removeFromBasket}>-</button>
       </div>
     </div>

@@ -36,6 +36,17 @@ function CheckoutProduct({ id, image, title, price, rating, hideButton, fromPaym
     });
   };
 
+  const renderRatingStars = () => {
+    const roundedRating = Math.round(rating);
+    const starIcons = [];
+
+    for (let i = 0; i < roundedRating; i++) {
+      starIcons.push(<p key={i}>⭐</p>);
+    }
+
+    return starIcons;
+  };
+
   return (
     <div className="checkoutProduct">
       <img className="checkoutProduct__image" src={image} alt="Checkout" />
@@ -47,11 +58,7 @@ function CheckoutProduct({ id, image, title, price, rating, hideButton, fromPaym
           <strong>{price}</strong>
         </p>
         <div className="checkoutProduct__rating">
-          {Array(rating)
-            .fill()
-            .map((_, i) => (
-              <p key={i}>⭐</p>
-            ))}
+        {renderRatingStars()}
         </div>
         {!hideButton && (
           <div className="product__addremove">
