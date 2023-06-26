@@ -5,7 +5,7 @@ import CheckoutProduct from "../components/CheckoutProduct";
 import { Link, useNavigate } from "react-router-dom";
 
 import { getBasketQuantity, getBasketTotal } from "../helpers/reducer";
-import logo from "../assets/g-logo.png";
+import logo from "../assets/logo.png";
 import axios from "../axios";
 import { db} from "../config/firebase";
 import {

@@ -47,6 +47,7 @@ registerRoute(
     (url.pathname.endsWith('.avif') ||
       url.pathname.endsWith('.png') ||
       url.pathname.endsWith('.ttf') ||
+      url.pathname.endsWith('.jpg') ||
       url.pathname.endsWith('.svg') ||
       url.pathname.endsWith('.woff') ),
   new StaleWhileRevalidate({

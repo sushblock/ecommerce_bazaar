@@ -22,7 +22,7 @@ function CheckoutProduct({ id, image, title, price, rating, hideButton, fromPaym
         id: id,
         title: title,
         image: image,
-        price: price,
+        price: price*80,
         rating: rating,
       },
     });

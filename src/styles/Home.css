@@ -5,14 +5,47 @@
   margin-right: auto;
   max-width: 1500px;
 }
+
+.home__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1500px;
+}
+
 .home__image {
   width: 100%;
   z-index: -1;
   margin-bottom: -22%;
   mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
 }
+
+.home__filter {
+  display: flex;
+  margin-bottom: 10px;
+  align-self: center;
+}
+
+.home__filter label {
+  margin-right: 10px;
+}
+
+.home_filter_width {
+  width: 180px;
+}
+
+.home_label_width {
+  width: 80px;
+}
+
+.home__filter select {
+  padding: 5px;
+  border-radius: 4px;
+}
+
 .home__row {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: center;  
 }

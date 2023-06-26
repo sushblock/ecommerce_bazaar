@@ -91,7 +91,7 @@ const OrderConfirmation = () => {
                   </p>
                   <div className="order__rating">
                     <p>Rating:</p>
-                    {Array(order.basketQty[key].item.rating)
+                    {Array(Math.round(order.basketQty[key].item.rating))
                       .fill()
                       .map((_, i) => (
                         <p key={i}>⭐</p>
