@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import "../styles/CheckoutProduct.css";
 import { useStateValue } from "../helpers/StateProvider";
 
-function CheckoutProduct({ id, image, title, price, rating, hideButton }) {
-  const [{ basket, basketQty }, dispatch] = useStateValue();
+function CheckoutProduct({ id, image, title, price, rating, hideButton, fromPayment }) {
+  const [{ basketQty }, dispatch] = useStateValue();
   const [qty, setQty] = useState(0);
 
   useEffect(() => {
@@ -43,21 +43,21 @@ function CheckoutProduct({ id, image, title, price, rating, hideButton }) {
       <div className="checkoutProduct__info">
         <p className="checkoutProduct__title">{title}</p>
         <p className="checkoutProduct__price">
-          <small>$</small>
+          <small>₹</small>
           <strong>{price}</strong>
         </p>
         <div className="checkoutProduct__rating">
           {Array(rating)
             .fill()
             .map((_, i) => (
-              <p key={i}>🌟</p>
+              <p key={i}>⭐</p>
             ))}
         </div>
         {!hideButton && (
           <div className="product__addremove">
-            <button onClick={addToBasket}>+</button>
+            {!fromPayment && <button onClick={addToBasket}>+</button>}            
             <label id="quantity">{qty}</label>
-            <button onClick={removeFromBasket}>-</button>
+            {!fromPayment && <button onClick={removeFromBasket}>-</button>}
           </div>
         )}
       </div>

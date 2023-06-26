@@ -5,8 +5,8 @@ import Header from "../components/Header";
 
 function Home() {
   return (
-    <>
-    <Header />    
+    
+      
     <div className="home">
       
       <div className="home__container">
@@ -62,7 +62,7 @@ function Home() {
         </div>
       </div>
     </div>
-    </>
+    
   );
 }
 

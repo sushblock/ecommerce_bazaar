@@ -9,12 +9,19 @@
   max-width: 300px; /* maximum width for each product */
   background-color: white;
   z-index: 1;
+  transition: all 0.3s ease;
+}
+
+.product:hover {
+  /* Apply the desired animation effect on hover */
+  transform: scale(1.05);
 }
 
 @media (min-width: 600px) {
   .product {
     width: calc(40% - 10px);
     max-width: none; /* remove the maximum width for larger screens */
+    transition: all 0.3s ease;
   }
 }
 
@@ -68,6 +75,6 @@
   border: 1px solid;
   border-color: #a88734 #9c7e31 #846a29;
   color: #111;
-  padding-left: 5px;
-  padding-right: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
 }

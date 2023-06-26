@@ -1,22 +1,23 @@
 import React, { useState, useEffect } from "react";
 import "../styles/Header.css";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
-import ShoppingBasketOutlinedIcon from '@mui/icons-material/ShoppingBasketOutlined';
+import ShoppingBasketOutlinedIcon from "@mui/icons-material/ShoppingBasketOutlined";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import { Link, useNavigate } from "react-router-dom";
 import { useStateValue } from "../helpers/StateProvider";
 import { auth } from "../config/firebase";
-
+import { getBasketQuantity } from "../helpers/reducer";
+import logo from "../assets/logo.png";
 
 function Header() {
-  const [{ basket, user }, dispatch] = useStateValue();
+  const [{ basketQty, user }, dispatch] = useStateValue();
   const navigate = useNavigate();
 
   const handleAuthenticaton = () => {
     if (user) {
       auth.signOut();
-      navigate("/")
+      navigate("/");
     }
   };
 
@@ -43,11 +44,7 @@ function Header() {
   return (
     <div className="header">
       <Link to="/">
-        <img
-          className="header__logo"
-          src="http://pngimg.com/uploads/amazon/amazon_PNG11.png"
-          alt="Amazon Clone"
-        />
+        <img className="header__logo" src={logo} alt="Om Ganpataye Namah" />
       </Link>
 
       <div className="header__search">
@@ -78,11 +75,12 @@ function Header() {
                   </span>
                 </div>
               </Link>
-
-              <div className="header__option">
-                <span className="header__optionLineOne">Returns</span>
-                <span className="header__optionLineTwo">& Orders</span>
-              </div>
+              <Link to={!user ? "/login" : "/pastorders"}>
+                <div className="header__option">
+                  <span className="header__optionLineOne">Returns</span>
+                  <span className="header__optionLineTwo">& Orders</span>
+                </div>
+              </Link>
 
               <div className="header__option">
                 <span className="header__optionLineOne">Your</span>
@@ -90,9 +88,9 @@ function Header() {
               </div>
               <Link to={!user ? "/login" : "/checkout"}>
                 <div className="header__optionBasket">
-                  <ShoppingBasketOutlinedIcon color="primary"/>
+                  <ShoppingBasketOutlinedIcon color="primary" />
                   <span className="header__optionLineTwo header__basketCount">
-                    {basket?.length}
+                    {getBasketQuantity(basketQty)}
                   </span>
                 </div>
               </Link>
@@ -112,10 +110,12 @@ function Header() {
             </div>
           </Link>
 
-          <div className="header__option">
-            <span className="header__optionLineOne">Returns</span>
-            <span className="header__optionLineTwo">& Orders</span>
-          </div>
+          <Link to={!user ? "/login" : "/pastorders"}>
+            <div className="header__option">
+              <span className="header__optionLineOne">Returns</span>
+              <span className="header__optionLineTwo">& Orders</span>
+            </div>
+          </Link>
 
           <div className="header__option">
             <span className="header__optionLineOne">Your</span>
@@ -126,7 +126,7 @@ function Header() {
             <div className="header__optionBasket">
               <ShoppingBasketOutlinedIcon color="primary" />
               <span className="header__optionLineTwo header__basketCount">
-                {basket?.length}
+                {getBasketQuantity(basketQty)}
               </span>
             </div>
           </Link>

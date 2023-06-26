@@ -1,11 +1,20 @@
 import SplashScreen from "../src/components/SplashScreen";
-import React, { useState, useEffect, Suspense } from "react";
+import React, { useState, useEffect, lazy, Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import Login from "./pages/Login";
+//import Login from "./pages/Login";
 import { auth } from "./config/firebase";
 import { useStateValue } from "../src/helpers/StateProvider";
-import Checkout from "./pages/Checkout";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
+import OrderConfirmation from "./pages/OrderConfirmation";
+import PastOrders from "./pages/PastOrders";
+//import Checkout from "./pages/Checkout";
+//import Payment from "./pages/Payment";
+const Header = lazy(() => import("./components/Header"));
+const Login = lazy(() => import("./pages/Login"));
+const Checkout = lazy(() => import("./pages/Checkout"));
+const Payment = lazy(() => import("./pages/Payment"));
 
 function App() {
   const [{ user }, dispatch] = useStateValue();
@@ -43,7 +52,7 @@ function App() {
         });
       }
     });
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="App">
@@ -63,11 +72,15 @@ function App() {
               </div>
             }
           >
-            
+            <Header />
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
               <Route path="/checkout" element={<Checkout />} />
+              <Route path="/payment" element={<Payment />} />
+              <Route path="/orders" element={<OrderConfirmation />} />
+              <Route path="/pastorders" element={<PastOrders />} />
+              <Route path="*" element={<Home />} />
             </Routes>
           </Suspense>
         </Router>

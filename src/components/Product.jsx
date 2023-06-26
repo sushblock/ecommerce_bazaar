@@ -3,7 +3,7 @@ import { useStateValue } from "../helpers/StateProvider";
 import "../styles/Product.css";
 
 function Product({ id, title, image, price, rating }) {
-  const [{ basket, basketQty }, dispatch] = useStateValue();
+  const [{ basketQty }, dispatch] = useStateValue();
   const [qty, setQty] = useState(0);
 
   useEffect(() => {
@@ -42,14 +42,14 @@ function Product({ id, title, image, price, rating }) {
       <div className="product__info">
         <p>{title}</p>
         <p className="product__price">
-          <small>$</small>
+          <small>₹</small>
           <strong>{price}</strong>
         </p>
         <div className="product__rating">
           {Array(rating)
             .fill()
             .map((_, i) => (
-              <p key={i}>🌟</p>
+              <p key={i}>⭐</p>
             ))}
         </div>
       </div>
