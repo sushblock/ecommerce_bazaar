@@ -2,7 +2,15 @@ import React, { useState, useEffect } from "react";
 import "../styles/CheckoutProduct.css";
 import { useStateValue } from "../helpers/StateProvider";
 
-function CheckoutProduct({ id, image, title, price, rating, hideButton, fromPayment }) {
+function CheckoutProduct({
+  id,
+  image,
+  title,
+  price,
+  rating,
+  hideButton,
+  fromPayment,
+}) {
   const [{ basketQty }, dispatch] = useStateValue();
   const [qty, setQty] = useState(0);
 
@@ -22,7 +30,7 @@ function CheckoutProduct({ id, image, title, price, rating, hideButton, fromPaym
         id: id,
         title: title,
         image: image,
-        price: price*80,
+        price: price * 80,
         rating: rating,
       },
     });
@@ -54,15 +62,17 @@ function CheckoutProduct({ id, image, title, price, rating, hideButton, fromPaym
       <div className="checkoutProduct__info">
         <p className="checkoutProduct__title">{title}</p>
         <p className="checkoutProduct__price">
-          <small>₹</small>
-          <strong>{price}</strong>
+          <strong>
+            {new Intl.NumberFormat("en-US", {
+              style: "currency",
+              currency: "INR",
+            }).format(price)}
+          </strong>
         </p>
-        <div className="checkoutProduct__rating">
-        {renderRatingStars()}
-        </div>
+        <div className="checkoutProduct__rating">{renderRatingStars()}</div>
         {!hideButton && (
           <div className="product__addremove">
-            {!fromPayment && <button onClick={addToBasket}>+</button>}            
+            {!fromPayment && <button onClick={addToBasket}>+</button>}
             <label id="quantity">{qty}</label>
             {!fromPayment && <button onClick={removeFromBasket}>-</button>}
           </div>

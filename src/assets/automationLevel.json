@@ -1,0 +1,149 @@
+{
+    "Hydroponics": {
+      "Backyard": {
+        "Low": {
+          "Description": "Basic timers for nutrient delivery and environmental control.",
+          "Components": [
+            "Nutrient delivery timers",
+            "Environmental control timers"
+          ]
+        },
+        "Moderate": {
+          "Description": "Advanced timers and controllers for precise nutrient delivery and environmental control.",
+          "Components": [
+            "Advanced nutrient delivery controllers",
+            "Precise environmental control systems"
+          ]
+        },
+        "High": {
+          "Description": "Advanced automation systems for precise nutrient delivery and environmental control.",
+          "Components": [
+            "High-end nutrient delivery automation",
+            "Advanced environmental control automation"
+          ]
+        }
+      },
+      "Greenhouse": {
+        "Low": {
+          "Description": "Basic timers for nutrient delivery and environmental control.",
+          "Components": [
+            "Nutrient delivery timers",
+            "Environmental control timers"
+          ]
+        },
+        "Moderate": {
+          "Description": "Advanced timers and controllers for precise nutrient delivery and environmental control.",
+          "Components": [
+            "Advanced nutrient delivery controllers",
+            "Precise environmental control systems"
+          ]
+        },
+        "High": {
+          "Description": "Advanced automation systems for precise nutrient delivery and environmental control.",
+          "Components": [
+            "High-end nutrient delivery automation",
+            "Advanced environmental control automation"
+          ]
+        }
+      }
+    },
+    "Aeroponics": {
+      "Backyard": {
+        "Low": {
+          "Description": "Basic timers for nutrient misting and environmental control.",
+          "Components": [
+            "Nutrient misting timers",
+            "Environmental control timers"
+          ]
+        },
+        "Moderate": {
+          "Description": "Advanced timers and controllers for precise nutrient misting and environmental control.",
+          "Components": [
+            "Advanced nutrient misting controllers",
+            "Precise environmental control systems"
+          ]
+        },
+        "High": {
+          "Description": "Advanced automation systems for precise nutrient misting and environmental control.",
+          "Components": [
+            "High-end nutrient misting automation",
+            "Advanced environmental control automation"
+          ]
+        }
+      },
+      "Greenhouse": {
+        "Low": {
+          "Description": "Basic timers for nutrient misting and environmental control.",
+          "Components": [
+            "Nutrient misting timers",
+            "Environmental control timers"
+          ]
+        },
+        "Moderate": {
+          "Description": "Advanced timers and controllers for precise nutrient misting and environmental control.",
+          "Components": [
+            "Advanced nutrient misting controllers",
+            "Precise environmental control systems"
+          ]
+        },
+        "High": {
+          "Description": "Advanced automation systems for precise nutrient misting and environmental control.",
+          "Components": [
+            "High-end nutrient misting automation",
+            "Advanced environmental control automation"
+          ]
+        }
+      }
+    },
+    "Aquaponics": {
+      "Backyard": {
+        "Low": {
+          "Description": "Basic timers for water circulation and environmental control.",
+          "Components": [
+            "Water circulation timers",
+            "Environmental control timers"
+          ]
+        },
+        "Moderate": {
+          "Description": "Advanced timers and controllers for water circulation and environmental control.",
+          "Components": [
+            "Advanced water circulation controllers",
+            "Precise environmental control systems"
+          ]
+        },
+        "High": {
+          "Description": "Advanced automation systems for water circulation, environmental control, and fish monitoring.",
+          "Components": [
+            "High-end water circulation automation",
+            "Fish monitoring systems",
+            "Advanced environmental control automation"
+          ]
+        }
+      },
+      "Greenhouse": {
+        "Low": {
+          "Description": "Basic timers for water circulation and environmental control.",
+          "Components": [
+            "Water circulation timers",
+            "Environmental control timers"
+          ]
+        },
+        "Moderate": {
+          "Description": "Advanced timers and controllers for water circulation and environmental control.",
+          "Components": [
+            "Advanced water circulation controllers",
+            "Precise environmental control systems"
+          ]
+        },
+        "High": {
+          "Description": "Advanced automation systems for water circulation, environmental control, and fish monitoring.",
+          "Components": [
+            "High-end water circulation automation",
+            "Fish monitoring systems",
+            "Advanced environmental control automation"
+          ]
+        }
+      }
+    }
+  }
+  

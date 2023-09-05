@@ -6,7 +6,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-import logo from "../assets/logo.png"
+import logo from "../assets/login-logo.png"
 
 function Login() {
   const navigate = useNavigate();
@@ -34,7 +34,7 @@ function Login() {
       .then((userCredential) => {
         // it successfully created a new user with email and password
         if (userCredential.user) {
-          navigate("/");
+          navigate("/products-home");
         }
       })
       .catch((error) => {
@@ -46,11 +46,11 @@ function Login() {
 
   return (
     <div className="login">
-      <Link to="/">
+      <Link to="/products-home">
         <img
           className="login__logo"
           src={logo}
-          alt="Anant Login"
+          alt="Back to Home Page"
         />
       </Link>
 
@@ -90,7 +90,7 @@ function Login() {
         </p>
 
         <button onClick={register} className="login__registerButton">
-          Create your Anant Account
+          Create your Account
         </button>
       </div>
     </div>

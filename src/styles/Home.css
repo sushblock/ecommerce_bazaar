@@ -37,11 +37,13 @@
 
 .home_label_width {
   width: 80px;
+  color: rgb(255, 255, 255);
 }
 
 .home__filter select {
   padding: 5px;
   border-radius: 4px;
+  color: #8a3939;
 }
 
 .home__row {

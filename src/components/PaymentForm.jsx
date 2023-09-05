@@ -44,7 +44,7 @@ const PaymentForm = ({paymentIntent}) => {
       const response = await cancelPaymentIntent.call({
         id: paymentIntent?.id,
       });
-      navigate("/");
+      navigate("/products-home");
     } catch (error) {
       console.log(error);
     }
@@ -57,7 +57,7 @@ const PaymentForm = ({paymentIntent}) => {
       <button disabled={!stripe || loading}>
         {loading ? "Submitting..." : "Submit"}
       </button>
-      <Link to="/" onClick={handleCancel}>
+      <Link to="/products-home" onClick={handleCancel}>
         Cancel
       </Link>
     </form>

@@ -14,8 +14,8 @@
   .splash-screen__spinner {
     width: 50px;
     height: 50px;
-    border: 2px solid #1e66a5;
-    border-top-color: #22148e;
+    border: 2px solid #a51e1e;
+    border-top-color: #8e1414;
     border-radius: 50%;
     animation: spin 1s linear infinite;
   }

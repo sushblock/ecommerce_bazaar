@@ -44,7 +44,11 @@ function Header() {
   return (
     <div className="header">
       <Link to="/">
-        <img className="header__logo" src={logo} alt="Om Ganpataye Namah" />
+        <img
+          className="header__logo"
+          src={logo}
+          alt="Hydroponics, Aeroponics, Aquaponics"
+        />
       </Link>
 
       <div className="header__search">
@@ -65,6 +69,12 @@ function Header() {
         <>
           {isMenuOpen && (
             <div className="header__menuItems">
+              <Link to={"/products-home"}>
+                <div className="header__option">
+                  <span className="header__optionLineOne">Products</span>
+                  <span className="header__optionLineTwo">To Buy</span>
+                </div>
+              </Link>
               <Link to={!user && "/login"}>
                 <div onClick={handleAuthenticaton} className="header__option">
                   <span className="header__optionLineOne">
@@ -75,17 +85,18 @@ function Header() {
                   </span>
                 </div>
               </Link>
+              <Link to={!user ? "/login" : "/calculator"}>
+                <div className="header__option">
+                  <span className="header__optionLineOne">Farm Cost</span>
+                  <span className="header__optionLineTwo">Calculator</span>
+                </div>
+              </Link>
               <Link to={!user ? "/login" : "/pastorders"}>
                 <div className="header__option">
                   <span className="header__optionLineOne">Returns</span>
                   <span className="header__optionLineTwo">& Orders</span>
                 </div>
               </Link>
-
-              <div className="header__option">
-                <span className="header__optionLineOne">Your</span>
-                <span className="header__optionLineTwo">Prime</span>
-              </div>
               <Link to={!user ? "/login" : "/checkout"}>
                 <div className="header__optionBasket">
                   <ShoppingBasketOutlinedIcon color="primary" />
@@ -99,6 +110,12 @@ function Header() {
         </>
       ) : (
         <div className="header__nav">
+          <Link to={"/products-home"}>
+            <div className="header__option">
+              <span className="header__optionLineOne">Products</span>
+              <span className="header__optionLineTwo">To Buy</span>
+            </div>
+          </Link>
           <Link to={!user && "/login"}>
             <div onClick={handleAuthenticaton} className="header__option">
               <span className="header__optionLineOne">
@@ -109,6 +126,12 @@ function Header() {
               </span>
             </div>
           </Link>
+          <Link to={!user ? "/login" : "/calculator"}>
+            <div className="header__option">
+              <span className="header__optionLineOne">Farm Cost</span>
+              <span className="header__optionLineTwo">Calculator</span>
+            </div>
+          </Link>
 
           <Link to={!user ? "/login" : "/pastorders"}>
             <div className="header__option">
@@ -116,11 +139,6 @@ function Header() {
               <span className="header__optionLineTwo">& Orders</span>
             </div>
           </Link>
-
-          <div className="header__option">
-            <span className="header__optionLineOne">Your</span>
-            <span className="header__optionLineTwo">Prime</span>
-          </div>
 
           <Link to={!user ? "/login" : "/checkout"}>
             <div className="header__optionBasket">

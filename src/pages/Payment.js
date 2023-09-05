@@ -167,7 +167,7 @@ function Payment() {
         address: "Vidhavani Enterprises Corporate Office",
       },
       theme: {
-        color: "#f0c14b",
+        color: "#8a3939",
       },
     };
 

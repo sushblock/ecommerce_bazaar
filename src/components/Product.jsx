@@ -52,8 +52,12 @@ function Product({ id, title, image, price, rating }) {
       <div className="product__info">
         <p>{title}</p>
         <p className="product__price">
-          <small>₹</small>
-          <strong>{price}</strong>
+          <strong>
+            {new Intl.NumberFormat("en-US", {
+              style: "currency",
+              currency: "INR",
+            }).format(price)}
+          </strong>
         </p>
         <div className="product__rating">{renderRatingStars()}</div>
       </div>
@@ -61,7 +65,9 @@ function Product({ id, title, image, price, rating }) {
       <img src={image} alt="" />
       <div className="product__addremove">
         <button onClick={addToBasket}>+</button>
-        <label id="quantity">{basketQty.find((item) => item.id === id)?.quantity || 0}</label>
+        <label id="quantity">
+          {basketQty.find((item) => item.id === id)?.quantity || 0}
+        </label>
         <button onClick={removeFromBasket}>-</button>
       </div>
     </div>
