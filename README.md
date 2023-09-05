@@ -1,4 +1,4 @@
-#It's deployed on bigulsound
+#It's deployed on bigulsound firebase
 
 # Getting Started with Create React App
 
