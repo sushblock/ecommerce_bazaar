@@ -6,7 +6,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-import logo from "../assets/login-logo.png"
+import logo from "../assets/logo.png"
 
 function Login() {
   const navigate = useNavigate();
