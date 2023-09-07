@@ -112,7 +112,7 @@ function App() {
               <Route path="/general-considerations" element={<GeneralConsiderations />} />
               <Route path="/decided-scenarios" element={<DecidedScenarios />} />
               <Route path="/planning-guide/:title" element={<PlanningGuideDetails />} />
-              <Route path="/calculator" element={<CostCalculator />} />
+              <Route path="/calculator" element={<CostCalculator user={user}/>} />
               <Route path="/farm-calc" element={<LatestCostCalculator />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/login" element={<Login />} />

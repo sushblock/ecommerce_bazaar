@@ -1,34 +1,50 @@
-import React, { useRef } from "react";
+import React, { useRef,  useEffect} from "react";
+import { useNavigate } from "react-router-dom";
 import { functions } from "../config/firebase";
 import { httpsCallable } from "firebase/functions";
+import { useStateValue } from "../helpers/StateProvider";
 import styled from "styled-components";
 
 const Contact = () => {
   const nameRef = useRef(null);
-  const emailRef = useRef(null);
+  //const emailRef = useRef(null);
   const messageRef = useRef(null);
+  const successMessageRef = useRef(null);
+  const [{ user }] = useStateValue();
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if(!user){
+      navigate("/login");
+    }
+    // Scroll to the top when the component mounts
+    window.scrollTo(0, 0);
+  })  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const name = nameRef.current.value;
-    const email = emailRef.current.value;
+    //const email = emailRef.current.value;
     const message = messageRef.current.value;
+    let successmessage = null;
 
     const submitContactUs = httpsCallable(functions, "submitContactUs");
     try {
       await submitContactUs({
         message: message,
         name: name,
-        email: email,
+        //email: email,
       }).then((result) => {
-        const data = result.data;
-        console.log(data.result);
+        successmessage = result.data;
       });
       nameRef.current.value = "";
-      emailRef.current.value = "";
+      //emailRef.current.value = "";
       messageRef.current.value = "";
+      successMessageRef.current.value = successmessage.result;
     } catch (error) {
       console.log(error);
+      successMessageRef.current.value = "Something went wrong, please try again";
     }
   };
 
@@ -39,6 +55,14 @@ const Contact = () => {
       margin-top: 2rem;
       text-align: center;
       padding: 0 2rem;
+
+      label {
+        margin-bottom: 9rem;
+        font-size: 16px;
+        text-align: center;
+        font-weight: 500;
+        color: #ccc;
+      }
 
       .contact-form {
         max-width: 50rem;
@@ -65,13 +89,7 @@ const Contact = () => {
             border-radius: 4px;
             resize: vertical;
             text-align: center;
-          }
-
-          label {
-            margin-bottom: 9rem;
-            font-size: 16px;
-            text-align: center;
-          }
+          }          
 
           input[type="submit"] {
             background-color: #007bff;
@@ -138,15 +156,6 @@ const Contact = () => {
               required
             />
 
-            <input
-              type="email"
-              name="Email"
-              placeholder="Email"
-              ref={emailRef}
-              autoComplete="off"
-              required
-            />
-
             <textarea
               name="message"
               cols="30"
@@ -159,6 +168,7 @@ const Contact = () => {
 
             <input type="submit" value="Send Email" />
           </form>
+          <label ref={successMessageRef}/>
         </div>
         <ContactInfo>
           <a

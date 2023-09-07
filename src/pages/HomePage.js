@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import overviewData from "../components/overviewData";
@@ -7,6 +7,10 @@ import banner from "../assets/vidhavani-farming-solutions-high-resolution-logo-c
 
 function HomePage() {
   const [{ user }] = useStateValue();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  })
 
   return (
     <Container>

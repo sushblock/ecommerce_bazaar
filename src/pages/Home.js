@@ -20,6 +20,8 @@ function Home() {
       new Set(productsData.products.map((product) => product.manufacturer))
     );
     setFilteredManufacturers(uniqueManufacturers);
+
+    window.scrollTo(0, 0);
   }, []);
 
   const handleCategoryChange = (event) => {

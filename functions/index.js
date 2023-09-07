@@ -163,13 +163,14 @@ exports.submitContactUs = functions
 
       try {// Checking that the user is authenticated.
         const name = data.name || null;
-        const clientEmail = data.email || null;
+        // const clientEmail = data.email || null;
         const mailOptions = {
-          from: clientEmail,
+          from: context.auth?.token.email || "",
           to: "admin@vidhavani.com",
-          subject: `Contact Us Form Submission from ${clientEmail}`,
+          subject: `Contact Us Form Submission from 
+          ${context.auth?.token.email}`,
           text: `${data.message}\nFrom: ${name}\n
-      Email: ${clientEmail}`,
+      Email: ${context.auth?.token.email}`,
         };
         // console.log(`mailOptions: ${JSON.stringify(mailOptions)}`);
         return await transporter.sendMail(mailOptions).then((info) => {

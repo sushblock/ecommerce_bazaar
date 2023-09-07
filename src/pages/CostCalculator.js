@@ -178,6 +178,10 @@ class CostCalculator extends Component {
     };
   }
 
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
   // Function to calculate the estimated cost and cost breakdown
   calculateCost = () => {
     const {
