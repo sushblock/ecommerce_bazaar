@@ -13,6 +13,7 @@ import GeneralConsiderations from "./components/GeneralConsiderations";
 import DecidedScenarios from "./components/DecidedScenarios";
 import CostCalculator from "./pages/CostCalculator";
 import LatestCostCalculator from "./pages/LatestCostCalculator";
+import Contact from "./pages/Contact";
 const Header = lazy(() => import("./components/Header"));
 const Login = lazy(() => import("./pages/Login"));
 const Checkout = lazy(() => import("./pages/Checkout"));
@@ -113,6 +114,7 @@ function App() {
               <Route path="/planning-guide/:title" element={<PlanningGuideDetails />} />
               <Route path="/calculator" element={<CostCalculator />} />
               <Route path="/farm-calc" element={<LatestCostCalculator />} />
+              <Route path="/contact" element={<Contact />} />
               <Route path="/login" element={<Login />} />
               <Route path="/checkout" element={<Checkout />} />
               <Route path="/payment" element={<Payment />} />

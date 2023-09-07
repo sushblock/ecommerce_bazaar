@@ -87,6 +87,10 @@
   display: none;
 }
 
+Link {
+  text-decoration: none;
+}
+
 /* Responsive Styles */
 @media (max-width: 600px) {
   .header {

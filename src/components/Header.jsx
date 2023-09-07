@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "../styles/Header.css";
-import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import ShoppingBasketOutlinedIcon from "@mui/icons-material/ShoppingBasketOutlined";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
@@ -88,6 +87,12 @@ function Header() {
                   <span className="header__optionLineTwo">Calculator</span>
                 </div>
               </Link>
+              <Link to={!user ? "/login" : "/contact"}>
+                <div className="header__option">
+                  <span className="header__optionLineOne">Contact Us</span>
+                  <span className="header__optionLineTwo">Today</span>
+                </div>
+              </Link>
               <Link to={!user ? "/login" : "/pastorders"}>
                 <div className="header__option">
                   <span className="header__optionLineOne">Returns</span>
@@ -129,7 +134,12 @@ function Header() {
               <span className="header__optionLineTwo">Calculator</span>
             </div>
           </Link>
-
+          <Link to={!user ? "/login" : "/contact"}>
+                <div className="header__option">
+                  <span className="header__optionLineOne">Contact Us</span>
+                  <span className="header__optionLineTwo">Today</span>
+                </div>
+              </Link>
           <Link to={!user ? "/login" : "/pastorders"}>
             <div className="header__option">
               <span className="header__optionLineOne">Returns</span>

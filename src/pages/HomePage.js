@@ -3,15 +3,14 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import overviewData from "../components/overviewData";
 import { useStateValue } from "../helpers/StateProvider";
-import banner from "../assets/vidhavani-farming-solutions-high-resolution-logo-color-on-transparent-background.png"
+import banner from "../assets/vidhavani-farming-solutions-high-resolution-logo-color-on-transparent-background.png";
 
 function HomePage() {
   const [{ user }] = useStateValue();
- 
 
   return (
     <Container>
-      <BannerImage src={banner} alt=""/>
+      <BannerImage src={banner} alt="" />
       {overviewData.sections.map((section, index) => (
         <Section key={index}>
           <SectionImage src={section.image} alt="" />
@@ -21,6 +20,11 @@ function HomePage() {
           </SectionContent>
         </Section>
       ))}
+      <SectionContent>
+        <ContactUs to={!user ? "/login" : "/contact"}>
+          Contact Us Today
+        </ContactUs>
+      </SectionContent>
 
       <ServicesSection>
         <ServicesHeading>Our Services</ServicesHeading>
@@ -37,7 +41,7 @@ function HomePage() {
       <ServicesSection>
         <ServicesHeading>Plan Your Farm</ServicesHeading>
         <ServicesGrid>
-        {overviewData.solutionsData.map((card, index) => (
+          {overviewData.solutionsData.map((card, index) => (
             <ServiceCard key={index}>
               <h2>{card.title}</h2>
               <p>{card.description}</p>
@@ -45,7 +49,12 @@ function HomePage() {
             </ServiceCard>
           ))}
         </ServicesGrid>
-      </ServicesSection>      
+      </ServicesSection>
+      <SectionContent>
+        <ContactUs to={!user ? "/login" : "/contact"}>
+          Contact Us Today
+        </ContactUs>
+      </SectionContent>
     </Container>
   );
 }
@@ -71,6 +80,32 @@ const StyledLink = styled(Link)`
   &:hover {
     background-color: ${({ theme }) => theme.colors.primary};
     color: #fff;
+  }
+`;
+
+const ContactUs = styled(Link)`
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s, transform 0.2s;
+  margin-top: 1rem;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.secondary};
+    transform: scale(1.05);
+  }
+
+  @media screen and (max-width: 768px) {
+    font-size: 1.4rem;
   }
 `;
 
@@ -100,7 +135,7 @@ const BannerImage = styled.img`
   width: 100%;
   height: auto;
   max-width: 300px;
-  
+
   @media (min-width: ${({ theme }) => theme.media.mobile}) {
     width: 50%;
   }

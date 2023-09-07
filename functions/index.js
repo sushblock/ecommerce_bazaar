@@ -146,12 +146,40 @@ exports.createUserDetails = functions
           cc: "admin@vidhavani.com",
           subject: "Welcome to Vidhavani!",
           // eslint-disable-next-line max-len
-          html: `<p>Hi ${user.displayName},</p> <p> Welcome to Vidhavani!</p><p>Your email ${user.email} has been registered with Vidhavani. As the next step, you can complete your profile for KYC details. Once the profile is complete, you are all set to start your investing and asset building journey with us.</p><p>Vidhavani Team!</p>`,
+          html: `<p>Hi ${user.email},</p> <p> Welcome to Vidhavani Farming Solutions and Services (VFSS)!</p><p>Your email ${user.email} has been registered with Vidhavani. You can contact us for any consultancy or farming solution and services on whatsapp. We will get back to you soon.</p><p>Vidhavani Team!</p><p>+91-7827628839</p>`,
         };
         // Send the email message
         const info = await transporter.sendMail(mailOptions);
         console.log(`Email sent: ${info.messageId}`);
       } catch (error) {
         console.error(error);
+      }
+    });
+
+exports.submitContactUs = functions
+    .region("asia-east2")
+    .https.onCall(async (data, context) => {
+      // console.log(`data: ${JSON.stringify(data)}`);
+
+      try {// Checking that the user is authenticated.
+        const name = data.name || null;
+        const clientEmail = data.email || null;
+        const mailOptions = {
+          from: clientEmail,
+          to: "admin@vidhavani.com",
+          subject: `Contact Us Form Submission from ${clientEmail}`,
+          text: `${data.message}\nFrom: ${name}\n
+      Email: ${clientEmail}`,
+        };
+        // console.log(`mailOptions: ${JSON.stringify(mailOptions)}`);
+        return await transporter.sendMail(mailOptions).then((info) => {
+          console.log(`Message sent: ${info.response}`);
+          return {result: "Success"};
+        }).catch((error) => {
+          console.error(error);
+          return {result: "error"};
+        });
+      } catch (error) {
+        return {result: "Some Issues"};
       }
     });
