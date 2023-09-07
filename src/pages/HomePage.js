@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import overviewData from "../components/overviewData";
 import { useStateValue } from "../helpers/StateProvider";
+import banner from "../assets/vidhavani-farming-solutions-high-resolution-logo-color-on-transparent-background.png"
 
 function HomePage() {
   const [{ user }] = useStateValue();
@@ -10,6 +11,7 @@ function HomePage() {
 
   return (
     <Container>
+      <BannerImage src={banner} alt=""/>
       {overviewData.sections.map((section, index) => (
         <Section key={index}>
           <SectionImage src={section.image} alt="" />
@@ -50,7 +52,7 @@ function HomePage() {
 
 const Container = styled.div`
   padding: 2rem;
-  background-color: #f7f7f7;
+  background-color: #cff2b5;
 `;
 
 const StyledLink = styled(Link)`
@@ -94,6 +96,16 @@ const SectionImage = styled.img`
   }
 `;
 
+const BannerImage = styled.img`
+  width: 100%;
+  height: auto;
+  max-width: 300px;
+  
+  @media (min-width: ${({ theme }) => theme.media.mobile}) {
+    width: 50%;
+  }
+`;
+
 const SectionContent = styled.div`
   flex: 1;
   padding: 2rem;
@@ -121,6 +133,7 @@ const ServiceCard = styled.div`
   background-color: #f7f7f7;
   padding: 1.5rem;
   border-radius: 8px;
+  border: 1px solid #cff2b5;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   max-width: 300px; /* Add a max-width to prevent overflow */
   margin: 0 auto; /* Center the card in mobile view */

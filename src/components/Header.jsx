@@ -47,14 +47,11 @@ function Header() {
         <img
           className="header__logo"
           src={logo}
-          alt="Hydroponics, Aeroponics, Aquaponics"
+          alt="Vidhavani Farming Solutions and Services. Serving all your Soliless farming needs!"
         />
       </Link>
 
-      <div className="header__search">
-        <input className="header__searchInput" type="text" />
-        <SearchOutlinedIcon className="header__searchIcon" />
-      </div>
+      
       {isMobileView ? (
         isMenuOpen ? (
           <CloseIcon className="header__menuIcon" onClick={handleMenuToggle} />

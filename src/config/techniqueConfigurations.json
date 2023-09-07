@@ -1,0 +1,144 @@
+{
+  "discountRatesSlabs": {
+    "slab1": {
+      "minSize": 0,
+      "maxSize": 200,
+      "discountRate": 0
+    },
+    "slab2": {
+      "minSize": 201,
+      "maxSize": 1000,
+      "discountRate": 0.1
+    },
+    "slab3": {
+      "minSize": 1001,
+      "maxSize": 1000000000000,
+      "discountRate": 0.2
+    }
+  },
+  "techniques": {
+    "hydroponics": {
+      "name": "Hydroponics",
+      "setupOptions": [
+        {
+          "name": "Nutrient Film Technique (NFT)",
+          "areaCostPerSquareMeter": 50,
+          "additionalCosts": [            
+            {
+              "name": "Structure Fixed Cost",
+              "costPerSquareMeter": 10
+            }
+          ]
+        },
+        {
+          "name": "Kratky-like Dutch Bucket Technique",
+          "areaCostPerSquareMeter": 60,
+          "additionalCosts": [
+            {
+              "name": "Bucket Cost",
+              "costPerSquareMeter": 5
+            }
+          ]
+        },
+        {
+          "name": "Deep Water Culture (DWC)",
+          "areaCostPerSquareMeter": 45,
+          "additionalCosts": [
+            {
+              "name": "Pond and Sheet Cost",
+              "costPerSquareMeter": 15
+            }
+          ]
+        }
+      ]
+    },
+    "aquaponics": {
+      "name": "Aquaponics",
+      "setupOptions": [
+        {
+          "name": "NFT with Fish Tanks",
+          "areaCostPerSquareMeter": 55,
+          "additionalCosts": [
+            {
+              "name": "Fish Tanks Cost",
+              "costPerSquareMeter": 20
+            },
+            {
+              "name": "Filtration System Cost",
+              "costPerSquareMeter": 10
+            }
+          ]
+        },
+        {
+          "name": "Kratky-like Dutch Bucket Technique with Fish Tanks",
+          "areaCostPerSquareMeter": 65,
+          "additionalCosts": [
+            {
+              "name": "Bucket Cost",
+              "costPerSquareMeter": 5
+            },
+            {
+              "name": "Fish Tanks Cost",
+              "costPerSquareMeter": 20
+            },
+            {
+              "name": "Filtration System Cost",
+              "costPerSquareMeter": 10
+            }
+          ]
+        },
+        {
+          "name": "DWC with Fish Tanks",
+          "areaCostPerSquareMeter": 50,
+          "additionalCosts": [
+            {
+              "name": "Pond and Sheet Cost",
+              "costPerSquareMeter": 15
+            },
+            {
+              "name": "Fish Tanks Cost",
+              "costPerSquareMeter": 20
+            },
+            {
+              "name": "Filtration System Cost",
+              "costPerSquareMeter": 10
+            }
+          ]
+        }
+      ]
+    },
+    "aeroponics": {
+      "name": "Aeroponics",
+      "setupOptions": [
+        {
+          "name": "Vertical PVC Pipe Tower",
+          "areaCostPerSquareMeter": 70,
+          "additionalCosts": [
+            {
+              "name": "Misting Pump Cost",
+              "costPerSquareMeter": 25
+            },
+            {
+              "name": "Tower Support Cost",
+              "costPerSquareMeter": 30
+            }
+          ]
+        },
+        {
+          "name": "Baseless Bucket Tower",
+          "areaCostPerSquareMeter": 75,
+          "additionalCosts": [
+            {
+              "name": "Misting Pump Cost",
+              "costPerSquareMeter": 25
+            },
+            {
+              "name": "Tower Support Cost",
+              "costPerSquareMeter": 20
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -3,9 +3,9 @@ import { techniques, greenshouse, smart } from "../assets/images";
 const overviewData = {
   sections: [
     {
-      title: "Welcome to Our Farming Solutions",
+      title: "Welcome to Vidhavani Farming Solutions and Services",
       description:
-        "Discover advanced farming techniques and consulting services to turn your high-tech farming dreams into reality. Apart from setting up your greenhouse, hydroponics/aeroponics/aquaponics setup, we can help help automating your farms. Also, we can develop your marketing solutions, like website creation, SEO, and ad campaigns.",
+        "Discover advanced farming techniques and consulting services to turn your high-tech farming dreams into reality. \n1. The most important part of your farming journey is the vision and planning. What do you want to achieve? How do you want to grow your business? We can act as your partner to firm up your vision and help you plan for that vision. It's not one size fit all solution. Every farm is different.\n2. We can set up your commercial / private / indoor / outdoor greenhouse, hydroponics / aeroponics / aquaponics setup. \n3. We can help help automating your farms as well. \n4. Also, we can develop your marketing solutions, like website creation, SEO, and ad campaigns.\n5. The most important part is that we can take care of all your farm's operational needs.",
       image: smart,
     },
     {

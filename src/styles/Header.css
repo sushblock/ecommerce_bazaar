@@ -2,7 +2,7 @@
   height: 60px;
   display: flex;
   align-items: center;
-  background-color: #4b1616;
+  background-color: #0c6902;
   position: sticky;
   top: 0;
   z-index: 100;
@@ -114,7 +114,7 @@
     position: absolute;
     top: 60px;
     right: 0;
-    background-color: #4b1616;
+    background-color: #0c6902;
     width: 95%;
     padding: 10px;
   }

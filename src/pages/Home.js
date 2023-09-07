@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import "../styles/Home.css";
 import Product from "../components/Product";
-import productsData from "../assets/products.json";
+import productsData from "../assets/products_data.json"; // Assuming you've imported the new JSON data format
 import banner from "../assets/shopping_banner.avif";
 
 function Home() {
   const [categoryFilter, setCategoryFilter] = useState("all");
-  const [brandFilter, setBrandFilter] = useState("all");
+  const [manufacturerFilter, setManufacturerFilter] = useState("all");
   const [filteredCategories, setFilteredCategories] = useState([]);
-  const [filteredBrands, setFilteredBrands] = useState([]);
+  const [filteredManufacturers, setFilteredManufacturers] = useState([]);
 
   useEffect(() => {
     const uniqueCategories = Array.from(
@@ -16,10 +16,10 @@ function Home() {
     );
     setFilteredCategories(uniqueCategories);
 
-    const uniqueBrands = Array.from(
-      new Set(productsData.products.map((product) => product.brand))
+    const uniqueManufacturers = Array.from(
+      new Set(productsData.products.map((product) => product.manufacturer))
     );
-    setFilteredBrands(uniqueBrands);
+    setFilteredManufacturers(uniqueManufacturers);
   }, []);
 
   const handleCategoryChange = (event) => {
@@ -27,26 +27,26 @@ function Home() {
     setCategoryFilter(selectedCategory);
 
     if (selectedCategory !== "all") {
-      const filteredBrands = productsData.products
+      const filteredManufacturers = productsData.products
         .filter((product) => product.category === selectedCategory)
-        .map((product) => product.brand);
-      setFilteredBrands(Array.from(new Set(filteredBrands)));
+        .map((product) => product.manufacturer);
+      setFilteredManufacturers(Array.from(new Set(filteredManufacturers)));
     } else {
-      setFilteredBrands(
+      setFilteredManufacturers(
         Array.from(
-          new Set(productsData.products.map((product) => product.brand))
+          new Set(productsData.products.map((product) => product.manufacturer))
         )
       );
     }
   };
 
-  const handleBrandChange = (event) => {
-    const selectedBrand = event.target.value;
-    setBrandFilter(selectedBrand);
+  const handleManufacturerChange = (event) => {
+    const selectedManufacturer = event.target.value;
+    setManufacturerFilter(selectedManufacturer);
 
-    if (selectedBrand !== "all") {
+    if (selectedManufacturer !== "all") {
       const filteredCategories = productsData.products
-        .filter((product) => product.brand === selectedBrand)
+        .filter((product) => product.manufacturer === selectedManufacturer)
         .map((product) => product.category);
       setFilteredCategories(Array.from(new Set(filteredCategories)));
     } else {
@@ -59,16 +59,16 @@ function Home() {
   };
 
   const filteredProducts = productsData.products.filter((product) => {
-    if (categoryFilter === "all" && brandFilter === "all") {
+    if (categoryFilter === "all" && manufacturerFilter === "all") {
       return true;
     }
     if (categoryFilter === "all") {
-      return product.brand === brandFilter;
+      return product.manufacturer === manufacturerFilter;
     }
-    if (brandFilter === "all") {
+    if (manufacturerFilter === "all") {
       return product.category === categoryFilter;
     }
-    return product.category === categoryFilter && product.brand === brandFilter;
+    return product.category === categoryFilter && product.manufacturer === manufacturerFilter;
   });
 
   return (
@@ -95,19 +95,19 @@ function Home() {
           </select>
         </div>
         <div className="home__filter">
-          <h4 htmlFor="brand" className="home_label_width">
-            Brand:
+          <h4 htmlFor="manufacturer" className="home_label_width">
+            Manufacturer:
           </h4>
           <select
-            id="brand"
-            value={brandFilter}
-            onChange={handleBrandChange}
+            id="manufacturer"
+            value={manufacturerFilter}
+            onChange={handleManufacturerChange}
             className="home_filter_width"
           >
             <option value="all">All</option>
-            {filteredBrands.map((brand) => (
-              <option key={brand} value={brand}>
-                {brand}
+            {filteredManufacturers.map((manufacturer) => (
+              <option key={manufacturer} value={manufacturer}>
+                {manufacturer}
               </option>
             ))}
           </select>
@@ -119,9 +119,9 @@ function Home() {
               key={product.id}
               id={String(product.id)}
               title={product.title}
-              price={product.price * 80}
+              price={product.price}
               rating={product.rating}
-              image={product.thumbnail}
+              image={product.image}
             />
           ))}
         </div>

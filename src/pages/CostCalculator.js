@@ -443,6 +443,7 @@ class CostCalculator extends Component {
 const Container = styled.div`
   padding: 2rem;
   text-align: center;
+  background-color: #cff2b5;
 `;
 
 const Title = styled.h1`
