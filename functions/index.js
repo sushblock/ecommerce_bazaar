@@ -1,4 +1,10 @@
 /* eslint-disable camelcase */
+// const OpenAIApi = require("openai");
+// const Configuration = require("openai");
+const SequentialChain = require("langchain/chains");
+const LLMChain = require("langchain/chains");
+const OpenAI = require("langchain/llms/openai");
+const PromptTemplate = require("langchain/prompts");
 const functions = require("firebase-functions");
 const cors = require("cors")();
 
@@ -8,9 +14,7 @@ const Razorpay = require("razorpay");
 // configuration set cmd firebase functions:config:set gmail.email="...." etc
 const key_id = functions.config().rzp.key_id;
 const key_secret = functions.config().rzp.key_secret;
-
-console.log(`key_id --> ${key_id}`);
-console.log(`key_secret --> ${key_secret}`);
+const openaiconfig = functions.config().openai.api_key;
 
 const instance = new Razorpay({
   key_id: key_id,
@@ -30,6 +34,11 @@ const transporter = nodemailer.createTransport({
     pass: gmailPassword,
   },
 });
+
+// const configuration = new Configuration({
+//   apiKey: openaiconfig,
+// });
+// const openai = new OpenAIApi(configuration);
 
 // Firestore operations
 const admin = require("firebase-admin");
@@ -182,5 +191,84 @@ exports.submitContactUs = functions
         });
       } catch (error) {
         return {result: "Some Issues"};
+      }
+    });
+
+
+exports.sequentialChain = functions
+    .region("asia-east2")
+    .https.onCall(async (data, context) => {
+      try {
+        const title = data.title || null;
+        const era = data.era || null;
+
+        if (!title || !era) {
+          throw new functions.https.HttpsError("Title or Era not provided");
+        }
+
+        // This is an LLMChain to write a synopsis
+        // given a title of a play and the era it is set in.
+        const llm = new OpenAI({
+          modelName: "text-davinci-003",
+          openAIApiKey: openaiconfig,
+          temperature: 0,
+        });
+        // eslint-disable-next-line max-len
+        const template = `You are a playwright. Given the title of play and the era it is set in, it is your job to write a synopsis for that title.
+
+Title: {title}
+Era: {era}
+Playwright: This is a synopsis for the above play:`;
+        const promptTemplate = new PromptTemplate({
+          template,
+          inputVariables: ["title", "era"],
+        });
+        const synopsisChain = new LLMChain({
+          llm,
+          prompt: promptTemplate,
+          outputKey: "synopsis",
+        });
+
+        // This is an LLMChain to write a review of a play given a synopsis.
+        const reviewLLM = new OpenAI({
+          modelName: "text-davinci-003",
+          openAIApiKey: openaiconfig,
+          temperature: 0,
+        });
+        // eslint-disable-next-line max-len
+        const reviewTemplate = `You are a play critic from the New York Times. Given the synopsis of play, it is your job to write a review for that play.
+  
+   Play Synopsis:
+   {synopsis}
+   Review from a New York Times play critic of the above play:`;
+        const reviewPromptTemplate = new PromptTemplate({
+          template: reviewTemplate,
+          inputVariables: ["synopsis"],
+        });
+        const reviewChain = new LLMChain({
+          llm: reviewLLM,
+          prompt: reviewPromptTemplate,
+          outputKey: "review",
+        });
+
+        const overallChain = new SequentialChain({
+          chains: [synopsisChain, reviewChain],
+          inputVariables: ["era", "title"],
+          // Here we return multiple variables
+          outputVariables: ["synopsis", "review"],
+          verbose: true,
+        });
+        const chainExecutionResult = await overallChain.call({
+          title: {title},
+          era: {era},
+        }).catch((error) => {
+          console.error(error);
+          return {result: "error"};
+        });
+        console.log(chainExecutionResult);
+        return {result: chainExecutionResult};
+      } catch (error) {
+        console.error(error);
+        return {result: "error"};
       }
     });

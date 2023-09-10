@@ -14,6 +14,9 @@ import DecidedScenarios from "./components/DecidedScenarios";
 import CostCalculator from "./pages/CostCalculator";
 import LatestCostCalculator from "./pages/LatestCostCalculator";
 import Contact from "./pages/Contact";
+//import InitialDetailsForm from "./components/aibasedcalc/InitialDetailsForm";
+import AIBasedCalc from "./pages/AIBasedCalc/AIBasedCalc"
+import SampleLangchainInput from "./pages/AIBasedCalc/SampleLangchainInput";
 const Header = lazy(() => import("./components/Header"));
 const Login = lazy(() => import("./pages/Login"));
 const Checkout = lazy(() => import("./pages/Checkout"));
@@ -114,6 +117,8 @@ function App() {
               <Route path="/planning-guide/:title" element={<PlanningGuideDetails />} />
               <Route path="/calculator" element={<CostCalculator user={user}/>} />
               <Route path="/farm-calc" element={<LatestCostCalculator />} />
+              <Route path="/aicalc" element={<AIBasedCalc />} />
+              <Route path="/sample-lang" element={<SampleLangchainInput />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/login" element={<Login />} />
               <Route path="/checkout" element={<Checkout />} />
